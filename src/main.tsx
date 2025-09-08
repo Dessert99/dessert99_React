@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
-// 폰트 (영문+한글)
+// MUI 설정
 import '@fontsource/roboto/300.css'
 import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
@@ -9,13 +9,13 @@ import '@fontsource/roboto/700.css'
 import '@fontsource/noto-sans-kr/400.css'
 import '@fontsource/noto-sans-kr/500.css'
 import '@fontsource/noto-sans-kr/700.css'
-
 import { ThemeProvider, CssBaseline, createTheme } from '@mui/material'
 
+//전역 CSS
 import './index.css'
 import App from './App.tsx'
 
-// 전역 타이포 설정 (한글 폴백 포함)
+// MUI 전역 타이포 설정 (한글 폴백 포함)
 const theme = createTheme({
   typography: {
     fontFamily: [
