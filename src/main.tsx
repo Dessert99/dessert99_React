@@ -11,8 +11,6 @@ import '@fontsource/noto-sans-kr/500.css'
 import '@fontsource/noto-sans-kr/700.css'
 import { ThemeProvider, CssBaseline, createTheme } from '@mui/material'
 
-//전역 CSS
-import './index.css'
 import App from './App.tsx'
 
 // MUI 전역 타이포 설정 (한글 폴백 포함)

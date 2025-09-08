@@ -1,26 +1,30 @@
-import { Container, Box, Stack } from '@mui/material'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+//헤더
+import Header from './components/Header'
+
+//페이지
+import Home from './pages/Home'
+import MuiPage from './pages/MuiPage'
 
 function App() {
   return (
-    <Container sx={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
-      <Container sx={{ backgroundColor: 'green' }}>
-        <Box sx={{ bgcolor: 'red', height: 50 }} />
-      </Container>
-      <Container sx={{ backgroundColor: 'yellow' }}>
-        <Box sx={{ bgcolor: 'red', height: 50 }} />
-      </Container>
-      <Container sx={{ backgroundColor: 'blue' }}>
-        <Box sx={{ bgcolor: 'red', height: 50 }} />
-      </Container>
-      <Stack
-        direction='row'
-        spacing={9}
-        sx={{ border: 'solid' }}>
-        <Box>Box 1</Box>
-        <Box>Box 2</Box>
-        <Box>Box 3</Box>
-      </Stack>
-    </Container>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path='/header'
+          element={<Header />}
+        />
+        <Route
+          path='/'
+          element={<Home />}
+        />
+        <Route
+          path='/mui'
+          element={<MuiPage />}
+        />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
