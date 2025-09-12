@@ -27,28 +27,45 @@ const Header = () => {
   return (
     <>
       <AppBar
+        position='sticky' // 이 설정으로 헤더가 레이아웃을 “차지”하므로 각 페이지에서 마진/패딩을 따로 뺄 필요가 없다.
         sx={{
-          background: 'orange'
+          background: 'orange',
+          boxShadow: 'none',
+          height: '4rem'
         }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
           {/* Box컴포넌트에 이미지를 넣는다. 이때, component를 img로 해줘야 img가 렌더링 된다. */}
           <Box
-            component='img'
-            src={logo}
-            alt='logo'
-            sx={{ height: 50 }}
-          />
-          {/* 메뉴 버튼들  (sm 이상에서 노출)  */}
+            component={NavLink}
+            to={'/'}>
+            <Box
+              component='img'
+              src={logo}
+              alt='logo'
+              sx={{ height: 50 }}
+            />
+          </Box>
+          {/* 메뉴 네비게이션  (sm 이상에서 노출)  */}
           <Box
             sx={{
-              display: { xs: 'none', sm: 'flex', gap: 20 }
+              display: { xs: 'none', sm: 'flex' },
+              width: '40rem',
+              justifyContent: 'space-between',
+              height: '100%',
+              gap: '1rem'
             }}>
             {pages.map((p, idx) => (
               <Button
                 key={idx}
                 component={NavLink}
                 to={p.path}
-                sx={{ color: 'white', '&.active': { color: 'lime' } }}>
+                sx={{
+                  color: 'white',
+                  fontSize: '1rem',
+                  '&.active': { color: 'lime' },
+                  '&:hover': { fontSize: '1.2rem' },
+                  width: '15rem'
+                }}>
                 {p.label}
               </Button>
             ))}
@@ -56,13 +73,13 @@ const Header = () => {
 
           {/* 화면 줄어들면 햄버거 버튼  (sm 미만에서 노출) */}
           <IconButton
-            aria-label='open navigation'
             onClick={() => setIsOpen(true)}
             sx={{ display: { xs: 'flex', sm: 'none' }, color: 'white' }}>
             <MenuIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
+
       {/* 오른쪽 사이드 슬라이드 */}
       <Drawer
         anchor='right'
@@ -123,15 +140,11 @@ export default Header
   - 의도된 리터럴 유니온을 쓸 때
     ex) const [status, setStatus] = useState<'idle'|'loading'|'done'>('idle');
 
-3. aria-label='open navigation' 뜻
-  - 스크린리더가 읽을 접근성용 이름을 지정. 아이콘만 있는 버튼(텍스트 없음)은 이름이 없으면 보조기술에 “button” 정도로만 들린다. aria-label로 “메뉴 열기” 같은 의도를 알려준다.
-  - 텍스트가 보이면 보통 불필요.
-
-4. Drawer에 role="presentation"
+3. Drawer에 role="presentation"
   - 이 요소는 레이아웃용일 뿐, 의미(시멘틱)를 스크린리더에 노출하지 마라는 표시예요. 접근성 트리에서 거의 사라진다.
   - 리스트 외곽 래퍼는 시멘틱 제거(스크린리더가 쓸데없이 읽지 않도록
 
-5. primary={p}의 의미
+  4. primary={p}의 의미
   - ListItemText의 메인 텍스트를 넣는 prop. 문자열이든 React 노드든 가능.
   - 기본적으로 이 값이 Typography로 감싸져 렌더
  */

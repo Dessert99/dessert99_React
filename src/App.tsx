@@ -5,10 +5,8 @@ import Layout from './layouts/Layout'
 
 //페이지
 import Home from './pages/Home'
-
 import Portfolio from './pages/Portfolio'
 import Interview from './pages/Interview'
-
 import Recruit from './pages/Recruit'
 
 function App() {

@@ -9,12 +9,19 @@ import '@fontsource/roboto/700.css'
 import '@fontsource/noto-sans-kr/400.css'
 import '@fontsource/noto-sans-kr/500.css'
 import '@fontsource/noto-sans-kr/700.css'
+
 import { ThemeProvider, CssBaseline, createTheme } from '@mui/material'
 
 import App from './App.tsx'
 
 // MUI 전역 타이포 설정 (한글 폴백 포함)
 const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#007FFF',
+      dark: '#0066CC'
+    }
+  },
   typography: {
     fontFamily: [
       'Roboto',
