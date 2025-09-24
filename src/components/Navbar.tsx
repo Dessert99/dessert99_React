@@ -115,6 +115,7 @@ const Navbar = () => {
 export default Navbar;
 
 /*
+sticky top-0 = 상단에 헤더를 고정한다.
 z-50 = z-index
 container = 좌우 자동 마진
 ml-12 = 왼쪽 마진 48px
