@@ -1,13 +1,13 @@
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import ProjectPage from './pages/ProjectPage';
-import MainPage from './pages/MainPage';
-import AboutPage from './pages/AboutPage';
-import BoardPage from './pages/BoardPage';
-import LeadershipPage from './pages/LeadershipPage';
-import ServicePage from './pages/ServicePage';
-import ContactPage from './pages/ContactPage';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import ProjectPage from '@/pages/ProjectPage';
+import MainPage from '@/pages/MainPage';
+import AboutPage from '@/pages/AboutPage';
+import BoardPage from '@/pages/BoardPage';
+import LeadershipPage from '@/pages/LeadershipPage';
+import ServicePage from '@/pages/ServicePage';
+import ContactPage from '@/pages/ContactPage';
 
 function Layout() {
   return (

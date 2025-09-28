@@ -1,4 +1,4 @@
-import logo from '../assets/react.svg';
+import logo from '@/assets/react.svg';
 import { CiMenuBurger } from 'react-icons/ci';
 
 type MemberProps = {
