@@ -21,10 +21,11 @@ type Language = 'ko' | 'en';
 const MENU: Menu[] = [
   { path: '/', label: 'Home' },
   { path: '/about', label: 'about' },
+  { path: '/board', label: 'board' },
+  { path: '/leadership', label: 'leadership' },
+  { path: '/service', label: 'service' },
+  { path: '/contact', label: 'contact' },
   { path: '/projects', label: 'projects' },
-  { path: '/gallery', label: 'gallery' },
-  { path: '/recruit', label: 'recruit' },
-  { path: '/community', label: 'community' },
 ];
 
 //메뉴 개별 요소 컴포넌트
