@@ -32,7 +32,7 @@ const MENU: Menu[] = [
 const MenuItem = ({ path, label, onClick }: MenuItemProps) => {
   return (
     <li>
-      <Link to={path} className="hover:text-blue-600 transition duration-300" onClick={onClick}>
+      <Link to={path} className="transition duration-300 hover:text-blue-600" onClick={onClick}>
         {label}
       </Link>
     </li>
@@ -43,12 +43,12 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [language, setLanguage] = useState<Language>('ko');
   return (
-    <nav className="sticky top-0 left-0 w-full  bg-white text-black p-4 shadow-lg z-50">
-      <div className="container mx-auto flex  justify-between items-center">
-        <h1 className="text-xl lg:text-2xl font-bold lg:ml-12 lg:mr-8">
+    <nav className="sticky top-0 left-0 z-50 w-full bg-white p-4 text-black shadow-lg">
+      <div className="container mx-auto flex items-center justify-between">
+        <h1 className="text-xl font-bold lg:mr-8 lg:ml-12 lg:text-2xl">
           <Link to="/">멋쟁이사자처럼</Link>
         </h1>
-        <div className="hidden lg:flex flex-1 justify-center">
+        <div className="hidden flex-1 justify-center lg:flex">
           <ul className="flex gap-8 text-lg">
             {MENU.map(item => {
               // {...item} : 객체 스프레드로, 객체의 각 키를 같은 이름의 props로 펼쳐서 전달
@@ -60,28 +60,25 @@ const Navbar = () => {
         <select
           value={language}
           onChange={e => setLanguage(e.target.value as Language)} // 타입 단언
-          className="hidden lg:block border rounded-md px-3 bg-white hover:border-blue-500 transition duration-300"
+          className="hidden rounded-md border bg-white px-3 transition duration-300 hover:border-blue-500 lg:block"
         >
           <option value="ko">한국어</option>
           <option value="en">영어</option>
         </select>
 
         {/* 모바일 환경 메뉴 아이콘*/}
-        <button className="lg:hidden text-2xl" onClick={() => setIsOpen(!isOpen)} aria-label="메뉴">
+        <button className="text-2xl lg:hidden" onClick={() => setIsOpen(!isOpen)} aria-label="메뉴">
           {isOpen ? <HiX /> : <HiMenu />}
         </button>
       </div>
 
       {/* 모바일 환경 슬라이드 바*/}
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-white text-black transform transition-transform duration-300 ease-in-out z-50 
-          ${isOpen ? 'translate-x-0' : 'translate-x-full'}
-          lg:hidden
-          `}
+        className={`fixed top-0 right-0 z-50 h-full w-64 transform bg-white text-black transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'} lg:hidden`}
       >
         <div className="p-4">
           <button
-            className="text-2xl mb-8 float-right"
+            className="float-right mb-8 text-2xl"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="닫기"
           >
@@ -102,7 +99,7 @@ const Navbar = () => {
           <select
             value={language}
             onChange={e => setLanguage(e.target.value as Language)}
-            className="border mt-6 w-30 py-1 rounded-md px-3 bg-white hover:border-blue-500 transition duration-300"
+            className="mt-6 w-30 rounded-md border bg-white px-3 py-1 transition duration-300 hover:border-blue-500"
           >
             <option value="ko">한국어</option>
             <option value="en">영어</option>

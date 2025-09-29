@@ -8,7 +8,7 @@ type MemberProps = {
 
 const MemberName = ({ name, role = 'member' }: MemberProps) => {
   return (
-    <div className={`${role === 'leader' ? 'bg-red-400' : 'bg-blue-500'}  p-2 rounded-lg`}>
+    <div className={`${role === 'leader' ? 'bg-red-400' : 'bg-blue-500'} rounded-lg p-2`}>
       {name}
     </div>
   );
@@ -16,23 +16,23 @@ const MemberName = ({ name, role = 'member' }: MemberProps) => {
 
 const ProjectCard = () => {
   return (
-    <div className=" bg-gray-600 text-white p-3 flex w-full justify-between rounded-lg gap-5">
-      <div className="grow-[2] ">
-        <img src={logo} alt="로고" className="w-full h-full" />
+    <div className="flex w-full justify-between gap-5 rounded-lg bg-gray-600 p-3 text-white">
+      <div className="grow-[2]">
+        <img src={logo} alt="로고" className="h-full w-full" />
       </div>
       <section className="grow-[20]">
         <h3 className="text-2xl">트립테일러</h3>
         <p className="text-gray-400">
           당신의 취향에 맞는 특별한 여행 루트를 추천해주는 맞춤형 여행 큐레이터
         </p>
-        <div className="flex gap-2 mt-4">
+        <div className="mt-4 flex gap-2">
           <MemberName name="이단규" role="leader" />
           <MemberName name="황준호" />
           <MemberName name="이우성" />
           <MemberName name="김유민" />
         </div>
       </section>
-      <div className="grow p-2 flex justify-end">
+      <div className="flex grow justify-end p-2">
         <CiMenuBurger size={32} />
       </div>
     </div>
