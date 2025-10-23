@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 //아이콘
 import { HiMenu, HiX } from 'react-icons/hi';
 

@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ProjectPage from '@/pages/ProjectPage';
@@ -14,7 +14,7 @@ function Layout() {
   return (
     <>
       <Navbar />
-      <Outlet /> {/*자식 요소를 가리킨다. 이렇게 하면 Outlet만 렌더링 된다?  */}
+      <Outlet /> {/*자식 요소를 가리킨다. 페이지 컴포넌트의 렌더링 위치를 결정해준다. */}
       <Footer />
     </>
   );
