@@ -8,6 +8,7 @@ import BoardPage from '@/pages/BoardPage';
 import LeadershipPage from '@/pages/LeadershipPage';
 import ServicePage from '@/pages/ServicePage';
 import ContactPage from '@/pages/ContactPage';
+import { Toaster } from './components/ui/sonner';
 
 function Layout() {
   return (
@@ -39,7 +40,12 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <Toaster />
+      <RouterProvider router={router} />
+    </>
+  );
 }
 
 export default App;
