@@ -17,3 +17,4 @@ package-lock.json
 **/.svn
 **/.hg
 **/node_modules
+README.md
