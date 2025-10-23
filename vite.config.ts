@@ -11,4 +11,9 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  server: {
+    watch: {
+      ignored: ['**/server/**'], // vite가 server폴더 아래 모든 파일을 감지하지 않는다. 그래서 변경되어도 리렌더링이 발생하지 않는다.
+    },
+  },
 });
