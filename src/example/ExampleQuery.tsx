@@ -1,4 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
+import { Button } from '@/components/ui/button';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 //타입
 type Todo = {
@@ -17,7 +18,19 @@ const fetchTodos = async () => {
   return data;
 };
 
-//쿼리 훅
+const createTodo = async (content: string) => {
+  const response = await fetch('http://localhost:3000/todos', {
+    method: 'POST',
+    body: JSON.stringify({
+      content,
+      isDone: false,
+    }),
+  });
+  const data: Todo = await response.json();
+  return data;
+};
+
+//Query 훅
 function useExampleQuery() {
   return useQuery({
     queryFn: fetchTodos, // 컴포넌트가 마운트 되었을 때 queryFn실행
@@ -35,6 +48,12 @@ function useExampleQuery() {
   });
 }
 /*
+💡 useQuery
+- 데이터 조회 요청만 해당한다.
+
+💡 useMutation
+- 데이터를 추가하거나 삭제할 때 사용한다.
+
 ⭐️ 리페칭 (데이터 다시 불러오기)
 1. Mount: 이 캐시 데이터를 사용하는 컴포넌트가 마운트 되었을 때
 2. WindowFocus: 사용자가 이 탭에 다시 돌아왔을 때
@@ -46,12 +65,35 @@ function useExampleQuery() {
 
 ⭐️ queryKey
 - 배열 전체를 하나의 키로 본다.
-
+- 이 키를 무효화하면 리페치한다. (Mutation에서 무효화)
 */
+
+// Mutation
+function useExampleMutation() {
+  const queryClient = useQueryClient(); // 캐시 데이터가 담겨있는 저장소를 불러온다.
+
+  return useMutation({
+    mutationFn: createTodo,
+    // 요청이 발송되었을 때
+    onMutate: () => {},
+    //요청이 종료되었을 때
+    onSettled: () => {},
+    //요청이 성공했을 때
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['todos'], // todos라는 쿼리키를 갖는 모든 캐시 데이터가 무효화된다.
+      });
+    },
+    // 요청에 실패했을 때. error객체가 담긴다.
+    onError: (error) => console.error(error),
+  });
+}
 
 //컴포넌트
 export default function ExampleComponent() {
   const { data, isLoading, error } = useExampleQuery();
+  const { mutate, isPending } = useExampleMutation();
+  // isPending은 비동기 처리의 로딩 상태를 반환한다.
 
   if (error) return <div>오류 발생</div>;
   if (isLoading) return <div>로딩중</div>;
@@ -62,6 +104,14 @@ export default function ExampleComponent() {
         {data?.map((item) => (
           <li key={item.id}>{item.content}</li>
         ))}
+        <Button
+          disabled={isPending}
+          onClick={() => {
+            mutate('안녕하세요');
+          }}
+        >
+          클릭
+        </Button>
       </div>
     </>
   );
