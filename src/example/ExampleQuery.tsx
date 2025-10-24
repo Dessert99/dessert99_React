@@ -23,15 +23,15 @@ function useExampleQuery() {
     queryFn: fetchTodos, // 컴포넌트가 마운트 되었을 때 queryFn실행
     queryKey: ['todos'], // 그 결과값을 todos라는 이름으로 저장한다. = todos라는 값으로 캐싱된다.
     retry: 2, // 재시도 두 번
-    staleTime: 5000, // 5초 동안 fresh (5초~30초가 일반적)
-
-    // refetchInterval: 3000, // 3초마다 리페치
+    staleTime: 5000, // 5초 동안 fresh (5초~30초가 일반적). stale상태일 때 카운팅
+    gcTime: 5 * 60 * 1000, // inactive상태에서 5분 뒤 메모리에서 삭제. inactive상태일 때 카운팅
 
     //리페치 설정
-    // refetchOnMount: false,
+    // refetchOnMount: true,
     // refetchOnWindowFocus: false,
     // refetchOnReconnect: false,
     // refetchInterval: false,
+    // refetchInterval: 3000, // 3초마다 리페치
   });
 }
 /*
