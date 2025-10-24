@@ -8,6 +8,15 @@ type Todo = {
   isDone: boolean;
 };
 
+//쿼리 키 상수화
+const QUERY_KEYS = {
+  todo: {
+    all: ['todo'],
+    list: ['todo', 'list'],
+    detail: (id: string) => ['todo', 'detail', id],
+  },
+};
+
 //api로직
 const fetchTodos = async () => {
   const response = await fetch('http://localhost:3000/todos');
@@ -34,7 +43,7 @@ const createTodo = async (content: string) => {
 function useExampleQuery() {
   return useQuery({
     queryFn: fetchTodos, // 컴포넌트가 마운트 되었을 때 queryFn실행
-    queryKey: ['todos'], // 그 결과값을 todos라는 이름으로 저장한다. = todos라는 값으로 캐싱된다.
+    queryKey: [QUERY_KEYS.todo.all], // 그 결과값을 todos라는 이름으로 저장한다. = todos라는 값으로 캐싱된다.
     retry: 2, // 재시도 두 번
     staleTime: 5000, // 5초 동안 fresh (5초~30초가 일반적). stale상태일 때 카운팅
     gcTime: 5 * 60 * 1000, // inactive상태에서 5분 뒤 메모리에서 삭제. inactive상태일 때 카운팅
@@ -81,7 +90,7 @@ function useExampleMutation() {
     //요청이 성공했을 때
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['todos'], // todos라는 쿼리키를 갖는 모든 캐시 데이터가 무효화된다.
+        queryKey: [QUERY_KEYS.todo.list], // todos라는 쿼리키를 갖는 모든 캐시 데이터가 무효화된다.
       });
     },
     // 요청에 실패했을 때. error객체가 담긴다.
