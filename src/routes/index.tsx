@@ -2,6 +2,7 @@ import DefaultLayout from '@/layouts/DefaultLayout';
 import AboutPage from '@/pages/AboutPage';
 import BoardPage from '@/pages/BoardPage';
 import ContactPage from '@/pages/ContactPage';
+import ExampleComponent from '@/example/ExampleQuery';
 import LeadershipPage from '@/pages/LeadershipPage';
 import MainPage from '@/pages/MainPage';
 import ProjectPage from '@/pages/ProjectPage';
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
       { path: '/projects', element: <ProjectPage /> },
     ],
   },
+  { path: '/todos', element: <ExampleComponent /> },
 ]);
 
 function Router() {
