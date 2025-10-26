@@ -11,22 +11,19 @@ import { createBrowserRouter, RouterProvider } from 'react-router';
 
 const router = createBrowserRouter([
   {
-    path: '/',
     element: <DefaultLayout />,
     children: [
-      {
-        index: true, //루트 경로와 동일
-        element: <MainPage />,
-      },
-      { path: '/about', element: <AboutPage /> },
-      { path: '/board', element: <BoardPage /> },
-      { path: '/leadership', element: <LeadershipPage /> },
-      { path: '/service', element: <ServicePage /> },
-      { path: '/contact', element: <ContactPage /> },
-      { path: '/projects', element: <ProjectPage /> },
+      { path: '/', element: <MainPage /> },
+      { path: 'about', element: <AboutPage /> },
+      { path: 'board', element: <BoardPage /> },
+      { path: 'leadership', element: <LeadershipPage /> },
+      { path: 'service', element: <ServicePage /> },
+      { path: 'contact', element: <ContactPage /> },
+      { path: 'projects', element: <ProjectPage /> },
     ],
   },
-  { path: '/todos', element: <ExampleComponent /> },
+  { path: 'todos', element: <ExampleComponent /> },
+  {},
 ]);
 
 function Router() {
