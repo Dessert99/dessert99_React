@@ -19,6 +19,8 @@ export default defineConfig([
     ],
     rules: {
       'tailwindcss/classnames-order': 'off', // 정렬은 Prettier가 담당하므로 충돌 방지
+       "@typescript-eslint/no-unused-vars": 'warn',  // 사용되지 않은 변수가 있다면 경고
+       "@typescript-eslint/no-explicit-any": 'warn' // 명시적으로 any를 사용하면 경고 
     },
     languageOptions: {
       ecmaVersion: 2020,
