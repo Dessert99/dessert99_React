@@ -82,7 +82,6 @@ function useExampleMutation() {
 
   return useMutation({
     mutationFn: createTodo,
-    // 요청이 발송되었을 때
     onMutate: () => {},
     //요청이 종료되었을 때
     onSettled: () => {},
@@ -101,6 +100,11 @@ function useExampleMutation() {
   });
 }
 /*
+⭐️ onMutate
+- 요청이 발송되었을 때 실행된다.
+- mutate함수의 인수로 전달되는 값이 onMutate의 매개변수가 된다.
+- 낙관적 업데이트를 여기서 설정하면 된다.
+
 ⭐️ invalidateQueries
 - 해당 쿼리 키를 무효화하여 리페칭시킨다.
 
