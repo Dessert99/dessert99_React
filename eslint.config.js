@@ -23,7 +23,6 @@ export default defineConfig([
        "@typescript-eslint/no-explicit-any": 'warn' // 명시적으로 any를 사용하면 경고 
     },
     languageOptions: {
-      ecmaVersion: 2020,
       globals: globals.browser,
     },
   },
