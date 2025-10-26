@@ -1,4 +1,5 @@
 import DefaultLayout from '@/layouts/DefaultLayout';
+import OneBiteLayout from '@/layouts/OneBiteLayout';
 import AboutPage from '@/pages/AboutPage';
 import BoardPage from '@/pages/BoardPage';
 import ContactPage from '@/pages/ContactPage';
@@ -7,7 +8,14 @@ import LeadershipPage from '@/pages/LeadershipPage';
 import MainPage from '@/pages/MainPage';
 import ProjectPage from '@/pages/ProjectPage';
 import ServicePage from '@/pages/ServicePage';
-import { createBrowserRouter, RouterProvider } from 'react-router';
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router';
+import HomePage from '@/pages/HomePage';
+import PasswordForgetPage from '@/pages/PasswordForgetPage';
+import ResetPasswordPage from '@/pages/ResetPasswordPage';
+import SignInPage from '@/pages/SignInPage';
+import SignUpPage from '@/pages/SignUpPage';
+import PostDetailPage from '@/pages/PostDetailPage';
+import ProfileDetailPage from '@/pages/ProfileDetailPage';
 
 const router = createBrowserRouter([
   {
@@ -22,8 +30,22 @@ const router = createBrowserRouter([
       { path: 'projects', element: <ProjectPage /> },
     ],
   },
-  { path: 'todos', element: <ExampleComponent /> },
-  {},
+
+  {
+    element: <OneBiteLayout />,
+    children: [
+      { path: 'todos', element: <ExampleComponent /> },
+      { path: 'home', element: <HomePage /> },
+      { path: 'sign-in', element: <SignInPage /> },
+      { path: 'sign-up', element: <SignUpPage /> },
+      { path: 'forget-password', element: <PasswordForgetPage /> },
+      { path: 'post/:postId', element: <PostDetailPage /> },
+      { path: 'profile/:userId', element: <ProfileDetailPage /> },
+      { path: 'reset-password', element: <ResetPasswordPage /> },
+    ],
+  },
+
+  { path: '*', element: <Navigate to={'/'} /> }, // 이상한 경로로 들어가면 홈으로 이동
 ]);
 
 function Router() {
