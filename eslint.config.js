@@ -4,12 +4,10 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
 import { defineConfig, globalIgnores } from 'eslint/config';
-import tailwind from 'eslint-plugin-tailwindcss';
 
 export default defineConfig([
   globalIgnores(['dist']),
   js.configs.recommended, // ESLint 기본 권장
-  ...tailwind.configs['flat/recommended'], // Tailwind 플러그인 권장(배열)
   ...tseslint.configs.recommended, // TypeScript 권장(배열)
   {
     files: ['**/*.{ts,tsx}'],
