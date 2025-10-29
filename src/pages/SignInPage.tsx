@@ -1,10 +1,10 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useSignInWithPassword } from '@/hooks/mutations/useSignInWithPassword';
+
 import githubLogo from '@/assets/github.png';
 import { useState } from 'react';
 import { Link } from 'react-router';
-import { useSignInWithOAuth } from '@/hooks/mutations/useSignInWithOAuth';
+import { useSignInWithOAuth, useSignInWithPassword } from '@/hooks/queries/useAuth';
 
 const SignInPage = () => {
   const [email, setEmail] = useState('');
