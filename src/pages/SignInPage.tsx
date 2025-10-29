@@ -5,11 +5,22 @@ import githubLogo from '@/assets/github.png';
 import { useState } from 'react';
 import { Link } from 'react-router';
 import { useSignInWithOAuth, useSignInWithPassword } from '@/hooks/queries/useAuth';
+import { toast } from 'sonner';
 
 const SignInPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { mutate: signInWithPassword } = useSignInWithPassword();
+  const { mutate: signInWithPassword } = useSignInWithPassword({
+    onError: (error) => {
+      // (D) 비밀번호 입력창을 비운다.
+      setPassword(''); // 에러 발생하면 비밀번호 초기화
+
+      // (E) 사용자에게 토스트 알림을 띄운다.
+      toast.error(error.message, {
+        position: 'top-center',
+      });
+    },
+  });
   const { mutate: signInWithOAuth } = useSignInWithOAuth();
 
   const handleSubmit = () => {
