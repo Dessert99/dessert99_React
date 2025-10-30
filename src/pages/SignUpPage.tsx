@@ -9,7 +9,7 @@ import { toast } from 'sonner';
 const SignUpPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { mutate: signUp } = useSignUp({
+  const { mutate: signUp, isPending } = useSignUp({
     onError: (error) => {
       const message = generateErrorMessage(error);
       toast.error(message, { position: 'top-center' });
@@ -26,6 +26,7 @@ const SignUpPage = () => {
       <div className='text-2xl font-bold'>회원가입 페이지</div>
       <div className='flex flex-col gap-3'>
         <Input
+          disabled={isPending}
           className='py-6'
           type='email'
           placeholder='이메일을 입력해주세요.'
@@ -33,6 +34,7 @@ const SignUpPage = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <Input
+          disabled={isPending}
           className='py-6'
           type='password'
           placeholder='비밀번호'
@@ -42,6 +44,7 @@ const SignUpPage = () => {
       </div>
       <div>
         <Button
+          disabled={isPending}
           className='w-full'
           onClick={handleSubmit}>
           회원가입
