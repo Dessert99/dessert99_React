@@ -4,9 +4,14 @@ import { signInWithPassword } from '@/api/auth';
 import { signUp } from '@/api/auth';
 import type { UseMutationCallback } from '@/types/types';
 
-export function useSignInWithOAuth() {
+export function useSignInWithOAuth(callbacks?: UseMutationCallback) {
   return useMutation({
     mutationFn: signInWithOAuth,
+    onError: (error) => {
+      if (callbacks?.onError) {
+        callbacks.onError(error);
+      }
+    },
   });
 }
 
@@ -27,8 +32,13 @@ export function useSignInWithPassword(callbacks?: UseMutationCallback) {
   });
 }
 
-export function useSignUp() {
+export function useSignUp(callbacks?: UseMutationCallback) {
   return useMutation({
     mutationFn: signUp,
+    onError: (error) => {
+      if (callbacks?.onError) {
+        callbacks.onError(error);
+      }
+    },
   });
 }

@@ -1,13 +1,20 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useSignUp } from '@/hooks/queries/useAuth';
+import { generateErrorMessage } from '@/lib/error';
 import { useState } from 'react';
 import { Link } from 'react-router';
+import { toast } from 'sonner';
 
 const SignUpPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { mutate: signUp } = useSignUp();
+  const { mutate: signUp } = useSignUp({
+    onError: (error) => {
+      const message = generateErrorMessage(error);
+      toast.error(message, { position: 'top-center' });
+    },
+  });
 
   const handleSubmit = async () => {
     if (email.trim() === '' || password.trim() === '') return;

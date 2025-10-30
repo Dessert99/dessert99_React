@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { Link } from 'react-router';
 import { useSignInWithOAuth, useSignInWithPassword } from '@/hooks/queries/useAuth';
 import { toast } from 'sonner';
+import { generateErrorMessage } from '@/lib/error';
 
 const SignInPage = () => {
   const [email, setEmail] = useState('');
@@ -16,12 +17,20 @@ const SignInPage = () => {
       setPassword(''); // 에러 발생하면 비밀번호 초기화
 
       // (E) 사용자에게 토스트 알림을 띄운다.
-      toast.error(error.message, {
+      const message = generateErrorMessage(error);
+      toast.error(message, {
         position: 'top-center',
       });
     },
   });
-  const { mutate: signInWithOAuth } = useSignInWithOAuth();
+  const { mutate: signInWithOAuth } = useSignInWithOAuth({
+    onError: (error) => {
+      const message = generateErrorMessage(error);
+      toast.error(message, {
+        position: 'top-center',
+      });
+    },
+  });
 
   const handleSubmit = () => {
     if (email.trim() === '' || password.trim() === '') return;
