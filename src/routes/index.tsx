@@ -17,6 +17,7 @@ import SignUpPage from '@/pages/SignUpPage';
 import PostDetailPage from '@/pages/PostDetailPage';
 import ProfileDetailPage from '@/pages/ProfileDetailPage';
 import ShadcnPage from '@/pages/ShadcnPage';
+import SessionProvider from '@/provider/SessionProvider';
 
 const router = createBrowserRouter([
   {
@@ -52,9 +53,10 @@ const router = createBrowserRouter([
 
 function Router() {
   return (
-    <>
+    //세션을 관리하는 모든 로직을 SessionProvider컴포넌트로 분리할 수 있다.
+    <SessionProvider>
       <RouterProvider router={router} />
-    </>
+    </SessionProvider>
   );
 }
 
