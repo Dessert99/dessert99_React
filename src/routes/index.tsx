@@ -18,6 +18,7 @@ import PostDetailPage from '@/pages/PostDetailPage';
 import ProfileDetailPage from '@/pages/ProfileDetailPage';
 import ShadcnPage from '@/pages/ShadcnPage';
 import SessionProvider from '@/provider/SessionProvider';
+import AnimationPage from '@/pages/AnimationPage';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,7 @@ const router = createBrowserRouter([
       { path: 'profile/:userId', element: <ProfileDetailPage /> },
       { path: 'reset-password', element: <ResetPasswordPage /> },
       { path: 'shadcn', element: <ShadcnPage /> },
+      { path: 'animation', element: <AnimationPage /> },
     ],
   },
 
