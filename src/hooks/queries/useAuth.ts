@@ -1,4 +1,4 @@
-import { requestPasswordResetEmail, signInWithOAuth } from '@/api/auth';
+import { requestPasswordResetEmail, signInWithOAuth, updatePassword } from '@/api/auth';
 import { useMutation } from '@tanstack/react-query';
 import { signInWithPassword } from '@/api/auth';
 import { signUp } from '@/api/auth';
@@ -54,6 +54,22 @@ export function useRequestPasswordResetEmail(callbacks?: UseMutationCallback) {
       }
     },
     //에러 객체를 그대로 외부 콜백에 전달
+    onError: (error) => {
+      if (callbacks?.onError) {
+        callbacks.onError(error);
+      }
+    },
+  });
+}
+
+export function useUpdatePassword(callbacks?: UseMutationCallback) {
+  return useMutation({
+    mutationFn: updatePassword,
+    onSuccess: () => {
+      if (callbacks?.onSuccess) {
+        callbacks.onSuccess();
+      }
+    },
     onError: (error) => {
       if (callbacks?.onError) {
         callbacks.onError(error);

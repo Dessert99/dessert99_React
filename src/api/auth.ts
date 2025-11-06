@@ -35,3 +35,12 @@ export const requestPasswordResetEmail = async (email: string) => {
   if (error) throw error;
   return data;
 };
+
+// 유저 정보 변경 요청
+export const updatePassword = async (password: string) => {
+  const { data, error } = await supabase.auth.updateUser({
+    password: password, // 변경될 유저 정보를 넣을 수 있다.
+  });
+  if (error) throw error;
+  return data;
+};
