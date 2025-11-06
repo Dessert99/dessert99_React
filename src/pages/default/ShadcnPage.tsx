@@ -1,5 +1,5 @@
-import Shadcn_Calendar from '@/components/Shadcn_Calendar';
-import Shadcn_InputOTP from '@/components/Shadcn_InputOTP';
+import Shadcn_Calendar from '@/components/default/Shadcn_Calendar';
+import Shadcn_InputOTP from '@/components/default/Shadcn_InputOTP';
 
 const ShadcnPage = () => {
   return (

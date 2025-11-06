@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Calendar } from './ui/calendar';
+import { Calendar } from '../ui/calendar';
 import { type DateRange } from 'react-day-picker';
 
 const Shadcn_Calendar = () => {

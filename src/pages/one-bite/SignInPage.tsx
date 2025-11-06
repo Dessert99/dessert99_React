@@ -85,7 +85,7 @@ const SignInPage = () => {
       </div>
       <div>
         <Link
-          to={'/sign-up'}
+          to={'/onebite/sign-up'}
           className='text-muted-foreground hover:underline'>
           {/* muted-foreground: 배경(background)과 대비되지만 덜 눈에 띄는 색 */}첫 방문이라면?
           회원가입 가기
