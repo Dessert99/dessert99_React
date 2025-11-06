@@ -29,23 +29,25 @@ import YesLoginLayout from '@/layouts/YesLoginLayout';
 
 const router = createBrowserRouter([
   {
+    path: '/',
     element: <DefaultLayout />,
     children: [
-      { path: '/', element: <DefaultHome /> },
-      { path: '/shadcn', element: <ShadcnPage /> },
-      { path: '/tailwind', element: <AnimationPage /> },
+      { index: true, element: <DefaultHome /> },
+      { path: 'shadcn', element: <ShadcnPage /> },
+      { path: 'tailwind', element: <AnimationPage /> },
     ],
   },
   {
+    path: 'mycompany',
     element: <MyCompanyWebsiteLayout />,
     children: [
-      { path: 'mycompany/', element: <MainPage /> },
-      { path: 'mycompany/about', element: <AboutPage /> },
-      { path: 'mycompany/board', element: <BoardPage /> },
-      { path: 'mycompany/leadership', element: <LeadershipPage /> },
-      { path: 'mycompany/service', element: <ServicePage /> },
-      { path: 'mycompany/contact', element: <ContactPage /> },
-      { path: 'mycompany/projects', element: <ProjectPage /> },
+      { index: true, element: <MainPage /> },
+      { path: 'about', element: <AboutPage /> },
+      { path: 'board', element: <BoardPage /> },
+      { path: 'leadership', element: <LeadershipPage /> },
+      { path: 'service', element: <ServicePage /> },
+      { path: 'contact', element: <ContactPage /> },
+      { path: 'projects', element: <ProjectPage /> },
     ],
   },
 
