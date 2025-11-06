@@ -1,4 +1,4 @@
-import GlobalLoader from '@/components/GlobalLoader';
+import GlobalLoader from '@/components/one-bite/GlobalLoader';
 import supabase from '@/lib/supabase';
 import { useIsLoaded, useSetSession } from '@/store/authStore';
 import { useEffect, type ReactNode } from 'react';
