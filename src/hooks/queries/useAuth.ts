@@ -1,4 +1,4 @@
-import { signInWithOAuth } from '@/api/auth';
+import { requestPasswordResetEmail, signInWithOAuth } from '@/api/auth';
 import { useMutation } from '@tanstack/react-query';
 import { signInWithPassword } from '@/api/auth';
 import { signUp } from '@/api/auth';
@@ -35,6 +35,25 @@ export function useSignInWithPassword(callbacks?: UseMutationCallback) {
 export function useSignUp(callbacks?: UseMutationCallback) {
   return useMutation({
     mutationFn: signUp,
+    onError: (error) => {
+      if (callbacks?.onError) {
+        callbacks.onError(error);
+      }
+    },
+  });
+}
+
+//callbacks으로 콜백 함수를 외부 주입 받음으로서 화면/상황별로 추가 동작을 끼워넣을 수 있어 재사용성이 올라간다.
+export function useRequestPasswordResetEmail(callbacks?: UseMutationCallback) {
+  return useMutation({
+    mutationFn: requestPasswordResetEmail,
+    //외부에서 넘겨준 onSuccess 콜백만 호출
+    onSuccess: () => {
+      if (callbacks?.onSuccess) {
+        callbacks.onSuccess();
+      }
+    },
+    //에러 객체를 그대로 외부 콜백에 전달
     onError: (error) => {
       if (callbacks?.onError) {
         callbacks.onError(error);

@@ -26,3 +26,12 @@ export const signInWithOAuth = async (provider: Provider) => {
 
   return data;
 };
+
+// 비밀번호 재설정하기 위해 인증 메일을 보내기 위한 로직
+export const requestPasswordResetEmail = async (email: string) => {
+  const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${import.meta.env.VITE_PUBLIC_URL}/onebite/reset-password`, // 이메일 인증이 끝난 뒤, 리디렉션 페이지를 설정해야 한다. 여기서 비밀번호를 재설정한다.
+  });
+  if (error) throw error;
+  return data;
+};
