@@ -1,52 +1,57 @@
-import DefaultLayout from '@/layouts/DefaultLayout';
-import OneBiteLayout from '@/layouts/OneBiteLayout';
-import AboutPage from '@/pages/AboutPage';
-import BoardPage from '@/pages/BoardPage';
-import ContactPage from '@/pages/ContactPage';
-import ExampleComponent from '@/example/ExampleQuery';
-import LeadershipPage from '@/pages/LeadershipPage';
-import MainPage from '@/pages/MainPage';
-import ProjectPage from '@/pages/ProjectPage';
-import ServicePage from '@/pages/ServicePage';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router';
-import HomePage from '@/pages/HomePage';
-import PasswordForgetPage from '@/pages/PasswordForgetPage';
-import ResetPasswordPage from '@/pages/ResetPasswordPage';
-import SignInPage from '@/pages/SignInPage';
-import SignUpPage from '@/pages/SignUpPage';
-import PostDetailPage from '@/pages/PostDetailPage';
-import ProfileDetailPage from '@/pages/ProfileDetailPage';
-import ShadcnPage from '@/pages/ShadcnPage';
 import SessionProvider from '@/provider/SessionProvider';
-import AnimationPage from '@/pages/AnimationPage';
+//mycompany
+import MyCompanyWebsiteLayout from '@/layouts/MyCompanyLayout';
+import MainPage from '@/pages/my-company/MainPage';
+import AboutPage from '@/pages/my-company/AboutPage';
+import BoardPage from '@/pages/my-company/BoardPage';
+import ContactPage from '@/pages/my-company/ContactPage';
+import LeadershipPage from '@/pages/my-company/LeadershipPage';
+import ProjectPage from '@/pages/my-company/ProjectPage';
+import ServicePage from '@/pages/my-company/ServicePage';
+//onebite
+import OneBiteLayout from '@/layouts/OneBiteLayout';
+import HomePage from '@/pages/one-bite/HomePage';
+import PasswordForgetPage from '@/pages/one-bite/PasswordForgetPage';
+import ResetPasswordPage from '@/pages/one-bite/ResetPasswordPage';
+import SignInPage from '@/pages/one-bite/SignInPage';
+import SignUpPage from '@/pages/one-bite/SignUpPage';
+import PostDetailPage from '@/pages/one-bite/PostDetailPage';
+import ProfileDetailPage from '@/pages/one-bite/ProfileDetailPage';
+import ExampleComponent from '@/example/ExampleQuery';
+//default
+import DefaultLayout from '@/layouts/DefaultLayout';
+import DefaultHome from '@/pages/default/DefaultHome';
+import ShadcnPage from '@/pages/default/ShadcnPage';
+import AnimationPage from '@/pages/default/AnimationPage';
 
 const router = createBrowserRouter([
+  { element: <DefaultLayout />, children: [{ path: '/', element: <DefaultHome /> }] },
   {
-    element: <DefaultLayout />,
+    element: <MyCompanyWebsiteLayout />,
     children: [
-      { path: '/', element: <MainPage /> },
-      { path: 'about', element: <AboutPage /> },
-      { path: 'board', element: <BoardPage /> },
-      { path: 'leadership', element: <LeadershipPage /> },
-      { path: 'service', element: <ServicePage /> },
-      { path: 'contact', element: <ContactPage /> },
-      { path: 'projects', element: <ProjectPage /> },
+      { path: 'mycompany/', element: <MainPage /> },
+      { path: 'mycompany/about', element: <AboutPage /> },
+      { path: 'mycompany/board', element: <BoardPage /> },
+      { path: 'mycompany/leadership', element: <LeadershipPage /> },
+      { path: 'mycompany/service', element: <ServicePage /> },
+      { path: 'mycompany/contact', element: <ContactPage /> },
+      { path: 'mycompany/projects', element: <ProjectPage /> },
     ],
   },
-
   {
     element: <OneBiteLayout />,
     children: [
-      { path: 'todos', element: <ExampleComponent /> },
-      { path: 'home', element: <HomePage /> },
-      { path: 'sign-in', element: <SignInPage /> },
-      { path: 'sign-up', element: <SignUpPage /> },
-      { path: 'forget-password', element: <PasswordForgetPage /> },
-      { path: 'post/:postId', element: <PostDetailPage /> },
-      { path: 'profile/:userId', element: <ProfileDetailPage /> },
-      { path: 'reset-password', element: <ResetPasswordPage /> },
-      { path: 'shadcn', element: <ShadcnPage /> },
-      { path: 'animation', element: <AnimationPage /> },
+      { path: 'onebite/', element: <HomePage /> },
+      { path: 'onebite/todos', element: <ExampleComponent /> },
+      { path: 'onebite/sign-in', element: <SignInPage /> },
+      { path: 'onebite/sign-up', element: <SignUpPage /> },
+      { path: 'onebite/forget-password', element: <PasswordForgetPage /> },
+      { path: 'onebite/post/:postId', element: <PostDetailPage /> },
+      { path: 'onebite/profile/:userId', element: <ProfileDetailPage /> },
+      { path: 'onebite/reset-password', element: <ResetPasswordPage /> },
+      { path: 'onebite/shadcn', element: <ShadcnPage /> },
+      { path: 'onebite/animation', element: <AnimationPage /> },
     ],
   },
 
