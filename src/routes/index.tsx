@@ -24,6 +24,8 @@ import DefaultLayout from '@/layouts/DefaultLayout';
 import DefaultHome from '@/pages/default/DefaultHome';
 import ShadcnPage from '@/pages/default/ShadcnPage';
 import AnimationPage from '@/pages/default/AnimationPage';
+import NoLoginLayout from '@/layouts/NoLoginLayout';
+import YesLoginLayout from '@/layouts/YesLoginLayout';
 
 const router = createBrowserRouter([
   {
@@ -46,19 +48,31 @@ const router = createBrowserRouter([
       { path: 'mycompany/projects', element: <ProjectPage /> },
     ],
   },
+
   {
+    path: 'onebite',
     element: <OneBiteLayout />,
     children: [
-      { path: 'onebite/', element: <HomePage /> },
-      { path: 'onebite/todos', element: <ExampleComponent /> },
-      { path: 'onebite/sign-in', element: <SignInPage /> },
-      { path: 'onebite/sign-up', element: <SignUpPage /> },
-      { path: 'onebite/forget-password', element: <PasswordForgetPage /> },
-      { path: 'onebite/post/:postId', element: <PostDetailPage /> },
-      { path: 'onebite/profile/:userId', element: <ProfileDetailPage /> },
-      { path: 'onebite/reset-password', element: <ResetPasswordPage /> },
-      { path: 'onebite/shadcn', element: <ShadcnPage /> },
-      { path: 'onebite/animation', element: <AnimationPage /> },
+      {
+        element: <NoLoginLayout />, // 라우트 가드
+        children: [
+          { path: 'sign-in', element: <SignInPage /> },
+          { path: 'sign-up', element: <SignUpPage /> },
+        ],
+      },
+      {
+        element: <YesLoginLayout />,
+        children: [
+          { index: true, element: <HomePage /> },
+          { path: 'todos', element: <ExampleComponent /> },
+          { path: 'forget-password', element: <PasswordForgetPage /> },
+          { path: 'post/:postId', element: <PostDetailPage /> },
+          { path: 'profile/:userId', element: <ProfileDetailPage /> },
+          { path: 'reset-password', element: <ResetPasswordPage /> },
+          { path: 'shadcn', element: <ShadcnPage /> },
+          { path: 'animation', element: <AnimationPage /> },
+        ],
+      },
     ],
   },
 
