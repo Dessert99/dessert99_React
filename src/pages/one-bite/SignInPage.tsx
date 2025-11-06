@@ -83,12 +83,17 @@ const SignInPage = () => {
           깃허브 계정으로 로그인
         </Button>
       </div>
-      <div>
+      <div className='flex flex-col gap-5'>
         <Link
           to={'/onebite/sign-up'}
           className='text-muted-foreground hover:underline'>
           {/* muted-foreground: 배경(background)과 대비되지만 덜 눈에 띄는 색 */}첫 방문이라면?
           회원가입 가기
+        </Link>
+        <Link
+          to={'/onebite/forget-password'}
+          className='text-muted-foreground hover:underline'>
+          비밀번호를 잊으셨나요?
         </Link>
       </div>
     </div>

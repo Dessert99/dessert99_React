@@ -60,6 +60,7 @@ const router = createBrowserRouter([
         children: [
           { path: 'sign-in', element: <SignInPage /> },
           { path: 'sign-up', element: <SignUpPage /> },
+          { path: 'forget-password', element: <PasswordForgetPage /> },
         ],
       },
       {
@@ -67,7 +68,6 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <HomePage /> },
           { path: 'todos', element: <ExampleComponent /> },
-          { path: 'forget-password', element: <PasswordForgetPage /> },
           { path: 'post/:postId', element: <PostDetailPage /> },
           { path: 'profile/:userId', element: <ProfileDetailPage /> },
           { path: 'reset-password', element: <ResetPasswordPage /> },

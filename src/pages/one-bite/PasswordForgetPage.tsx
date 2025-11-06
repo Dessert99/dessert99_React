@@ -1,5 +1,22 @@
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+
 const PasswordForgetPage = () => {
-  return <div>비밀번호 찾기 페이지</div>;
+  return (
+    <div className='flex flex-col gap-10'>
+      <div className='flex flex-col gap-2'>
+        <div className='text-xl font-bold'>비밀번호를 잊으셨나요?</div>
+        <div className='text-muted-foreground'>
+          이메일로 비밀번호를 재설정할 수 있는 인증 링크를 보내드립니다.
+        </div>
+      </div>
+      <Input
+        className='py-6'
+        placeholder='example@abc.com'
+      />
+      <Button className='w-full'>인증 메일 요청하기</Button>
+    </div>
+  );
 };
 
 export default PasswordForgetPage;
