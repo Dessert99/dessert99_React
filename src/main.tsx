@@ -6,20 +6,18 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 // 모든 서버 상태를 저장하는 스토어
-const queryClient = new QueryClient(/*{
-  기본값 설정 가능  
+const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 0,
-      gcTime: 5 * 60 * 1000,
-
+      retry: false,
+      refetchOnWindowFocus: true,
       // refetchOnMount: true,
-      // refetchOnWindowFocus: false,
+
       // refetchOnReconnect: false,
       // refetchInterval: false,
     },
   },
-}*/);
+});
 
 createRoot(document.getElementById('root')!).render(
   <QueryClientProvider client={queryClient}>
