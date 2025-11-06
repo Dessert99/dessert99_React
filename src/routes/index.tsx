@@ -26,7 +26,14 @@ import ShadcnPage from '@/pages/default/ShadcnPage';
 import AnimationPage from '@/pages/default/AnimationPage';
 
 const router = createBrowserRouter([
-  { element: <DefaultLayout />, children: [{ path: '/', element: <DefaultHome /> }] },
+  {
+    element: <DefaultLayout />,
+    children: [
+      { path: '/', element: <DefaultHome /> },
+      { path: '/shadcn', element: <ShadcnPage /> },
+      { path: '/tailwind', element: <AnimationPage /> },
+    ],
+  },
   {
     element: <MyCompanyWebsiteLayout />,
     children: [
