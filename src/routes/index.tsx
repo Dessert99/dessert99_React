@@ -26,6 +26,7 @@ import ShadcnPage from '@/pages/default/ShadcnPage';
 import AnimationPage from '@/pages/default/AnimationPage';
 import NoLoginLayout from '@/layouts/NoLoginLayout';
 import YesLoginLayout from '@/layouts/YesLoginLayout';
+import ModalProvider from '@/provider/ModalProvider';
 
 const router = createBrowserRouter([
   {
@@ -85,7 +86,9 @@ function Router() {
   return (
     //세션을 관리하는 모든 로직을 SessionProvider컴포넌트로 분리할 수 있다.
     <SessionProvider>
-      <RouterProvider router={router} />
+      <ModalProvider>
+        <RouterProvider router={router} />
+      </ModalProvider>
     </SessionProvider>
   );
 }
