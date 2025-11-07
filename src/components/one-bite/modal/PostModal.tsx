@@ -1,18 +1,34 @@
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
+import { useCreatePost } from '@/hooks/queries/usePost';
 import { useAllModal } from '@/store/postModalStore';
 import { ImageIcon } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import { toast } from 'sonner';
 
 //  index페이지에 포함되는 위치면 어디든 넣을 수 있다. (모달 상태를 전역으로 관리하기 때문)
 export default function PostModal() {
   const { isOpen, close } = useAllModal();
   const [content, setContent] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const { mutate: createPost, isPending } = useCreatePost({
+    onSuccess: () => {
+      close(); // 포스트 요청이 성공적이라면 모달을 닫는다.
+    },
+    onError: () => {
+      toast.error('포스트 생성에 실패하였습니다.', { position: 'top-center' });
+    },
+  });
 
   // 모달 닫는 핸들러
   const handleClostModal = () => {
     close();
+  };
+
+  // 제출 핸들러
+  const handleSubmitPost = () => {
+    if (content.trim() === '') return;
+    createPost(content);
   };
 
   useEffect(() => {
@@ -46,6 +62,7 @@ export default function PostModal() {
         className='max-h-[90vh]'>
         <DialogTitle>포스트 작성</DialogTitle>
         <textarea
+          disabled={isPending} // 로딩 상태 처리
           ref={textareaRef}
           className='text-muted-foreground max-h-125 min-h-25 focus:outline-none'
           placeholder='무슨 일이 있었나요?'
@@ -58,7 +75,12 @@ export default function PostModal() {
           <ImageIcon />
           이미지 추가
         </Button>
-        <Button className='cursor-pointer'>저장</Button>
+        <Button
+          disabled={isPending} // 로딩 상태 처리
+          onClick={handleSubmitPost}
+          className='cursor-pointer'>
+          저장
+        </Button>
       </DialogContent>
     </Dialog>
   );
