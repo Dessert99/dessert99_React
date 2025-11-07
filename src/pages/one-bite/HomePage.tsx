@@ -1,5 +1,11 @@
+import CreatePostButton from '@/components/one-bite/post/CreatePostButton';
+
 const HomePage = () => {
-  return <div>홈페이지</div>;
+  return (
+    <div className='flex flex-col gap-10'>
+      <CreatePostButton />
+    </div>
+  );
 };
 
 export default HomePage;
