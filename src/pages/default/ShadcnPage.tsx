@@ -1,4 +1,5 @@
 import Shadcn_Button from '@/components/shadcn/Shadcn_Button';
+import Shadcn_Popover from '@/components/shadcn/Shadcn_Popover';
 
 const ShadcnPage = () => {
   return (
@@ -10,6 +11,10 @@ const ShadcnPage = () => {
         <div className='flex flex-col gap-5 border-2 border-black p-5'>
           <div className='bold text-2xl'>첫 번째: Button</div>
           <Shadcn_Button />
+        </div>
+        <div className='flex flex-col gap-5 border-2 border-black p-5'>
+          <div className='bold text-2xl'>두 번째: Popover</div>
+          <Shadcn_Popover />
         </div>
       </main>
     </div>
