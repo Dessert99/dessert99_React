@@ -27,6 +27,10 @@ import AnimationPage from '@/pages/default/AnimationPage';
 import NoLoginLayout from '@/layouts/NoLoginLayout';
 import YesLoginLayout from '@/layouts/YesLoginLayout';
 import ModalProvider from '@/provider/ModalProvider';
+import Home from '@/pages/likelion-project/Home';
+import LikeLionLayout from '@/layouts/LikeLionLayout';
+import Study from '@/pages/likelion-project/Study';
+import Collection from '@/pages/likelion-project/Collection';
 
 const router = createBrowserRouter([
   {
@@ -76,6 +80,15 @@ const router = createBrowserRouter([
           { path: 'animation', element: <AnimationPage /> },
         ],
       },
+    ],
+  },
+  {
+    path: 'likelion',
+    element: <LikeLionLayout />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: 'study', element: <Study /> },
+      { path: 'collection', element: <Collection /> },
     ],
   },
 

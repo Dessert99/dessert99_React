@@ -20,6 +20,11 @@ export default function DefaultHome() {
           <Link to={'/shadcn'}>shadcn 연습하러 가기</Link>
         </Button>
       </div>
+      <div className='flex justify-center gap-10'>
+        <Button asChild>
+          <Link to={'/likelion'}>멋사 프로젝트 실습해보기</Link>
+        </Button>
+      </div>
     </div>
   );
 }
