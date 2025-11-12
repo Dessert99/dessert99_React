@@ -31,6 +31,7 @@ import Home from '@/pages/likelion-project/Home';
 import LikeLionLayout from '@/layouts/LikeLionLayout';
 import Study from '@/pages/likelion-project/Study';
 import Collection from '@/pages/likelion-project/Collection';
+import StudyRoom from '@/pages/likelion-project/StudyRoom';
 
 const router = createBrowserRouter([
   {
@@ -88,6 +89,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: 'study', element: <Study /> },
+      { path: 'study/:id', element: <StudyRoom /> },
       { path: 'collection', element: <Collection /> },
     ],
   },
