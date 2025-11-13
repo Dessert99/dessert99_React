@@ -3,7 +3,7 @@ import { House, NotebookPen, Coffee, User } from 'lucide-react';
 
 export default function LikeLionLayout() {
   return (
-    <div className='mx-auto flex min-h-screen max-w-xl flex-col border-2 border-black'>
+    <div className='bg-likelion-background mx-auto flex min-h-screen max-w-xl flex-col border-2 border-black'>
       <main className='flex w-full flex-1 flex-col'>
         <Outlet />
       </main>
