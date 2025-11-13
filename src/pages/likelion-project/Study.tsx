@@ -12,9 +12,11 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
 import { DUMMY_MYSTUDYROOM } from '@/constants/dummy';
 import { Link } from 'react-router';
+import { Button } from '@/components/ui/button';
 
 export default function Study() {
   const now = dayjs().format('M월 D일 dddd'); // day.js()는 오늘 날짜 객체 생성
@@ -25,7 +27,21 @@ export default function Study() {
         <div className='flex justify-between p-4 px-10'>
           <div />
           <div className='text-2xl font-bold'>나의 스터디룸</div>
-          <Plus className='' />
+
+          <Popover>
+            <PopoverTrigger>
+              <Plus />
+            </PopoverTrigger>
+            <PopoverContent
+              className='flex w-auto border-none bg-transparent p-0 shadow-none' // w-auto는 기본 너비 대신 내용물(버튼)의 너비에 맞게 줄여줍
+            >
+              <Button
+                asChild
+                className='bg-likelion-brwon-300 rounded-2xl p-5'>
+                <Link to={'/likelion/create-study'}>생성하기</Link>
+              </Button>
+            </PopoverContent>
+          </Popover>
         </div>
         <div className='text-center text-sm'>{now}</div>
       </header>
